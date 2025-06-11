@@ -1,1 +1,1 @@
-# react_learning
+# React + FastAPI on GitHub Codespaces

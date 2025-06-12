@@ -1,11 +1,22 @@
 {
-  "name": "React + FastAPI Workspace",
-  "dockerComposeFile": "docker-compose.yml",
-  "service": "backend",
-  "workspaceFolder": "/workspaces/react_learning",
-  "forwardPorts": [8000, 3000],
-  "settings": {
-    "terminal.integrated.defaultProfile.linux": "bash"
+  "name": "fastapi-react-app",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11", 
+  "postCreateCommand": "pip install -r backend/requirements.txt && cd frontend && npm install",
+  "forwardPorts": [8000, 5173],
+  "portsAttributes": {
+    "8000": {
+      "label": "FastAPI Server",
+      "onAutoForward": "openBrowser"
+    },
+    "5173": {
+      "label": "React Frontend",
+      "onAutoForward": "openBrowser"
+    }
   },
-  "postCreateCommand": "pip install -r backend/requirements.txt"
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python", "esbenp.prettier-vscode"]
+    }
+  }
 }
+
